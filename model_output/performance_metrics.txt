@@ -1,0 +1,31 @@
+Hasil Pelatihan Model - 2025-06-25 22:13:12
+==================================================
+
+Akurasi Model: 0.8882
+
+Laporan Klasifikasi:
+              precision    recall  f1-score   support
+
+           0       0.84      0.96      0.90       983
+           1       0.96      0.81      0.88       976
+
+    accuracy                           0.89      1959
+   macro avg       0.90      0.89      0.89      1959
+weighted avg       0.90      0.89      0.89      1959
+
+
+Matriks Konfusi:
+[[947  36]
+ [183 793]]
+
+Tingkat Kepentingan Fitur:
+Jumlah_Keluhan: 0.941271
+Kilometer: 0.017559
+KM_Terakhir_Ganti_Oli: 0.015076
+KM_Per_Tahun: 0.011893
+Kode Unit Motor: 0.007166
+Bulan_Terakhir_Ganti_Oli: 0.003501
+Tahun Kendaraan: 0.001805
+Kondisi_Oli: 0.001729
+Kondisi_Rem: 0.000000
+Usia_Kendaraan: 0.000000

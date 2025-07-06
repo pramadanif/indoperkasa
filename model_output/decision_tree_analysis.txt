@@ -1,0 +1,1393 @@
+1. Struktur Pohon Keputusan (Format Teks):
+
+|--- Jumlah_Keluhan <= 0.50
+|   |--- class: rutin
+|--- Jumlah_Keluhan >  0.50
+|   |--- Jumlah_Keluhan <= 1.50
+|   |   |--- Bulan_Terakhir_Ganti_Oli <= 3.50
+|   |   |   |--- KM_Terakhir_Ganti_Oli <= 87.50
+|   |   |   |   |--- Kode Unit Motor <= 3.50
+|   |   |   |   |   |--- class: repair
+|   |   |   |   |--- Kode Unit Motor >  3.50
+|   |   |   |   |   |--- Kilometer <= 37990.00
+|   |   |   |   |   |   |--- Kode Unit Motor <= 7.50
+|   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |--- Kode Unit Motor >  7.50
+|   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |--- Kilometer >  37990.00
+|   |   |   |   |   |   |--- class: repair
+|   |   |   |--- KM_Terakhir_Ganti_Oli >  87.50
+|   |   |   |   |--- Kilometer <= 64034.50
+|   |   |   |   |   |--- Kode Unit Motor <= 6.50
+|   |   |   |   |   |   |--- Kondisi_Oli <= 1.50
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 1505.00
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 1372.00
+|   |   |   |   |   |   |   |   |   |--- Kilometer <= 51457.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kilometer >  51457.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  1372.00
+|   |   |   |   |   |   |   |   |   |--- Kilometer <= 29765.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kilometer >  29765.50
+|   |   |   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  1505.00
+|   |   |   |   |   |   |   |   |--- Tahun Kendaraan <= 2019.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- Tahun Kendaraan >  2019.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- Kondisi_Oli >  1.50
+|   |   |   |   |   |   |   |--- KM_Per_Tahun <= 6458.50
+|   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- KM_Per_Tahun >  6458.50
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 2082.50
+|   |   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  2082.50
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor <= 2.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor >  2.50
+|   |   |   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |--- Kode Unit Motor >  6.50
+|   |   |   |   |   |   |--- KM_Per_Tahun <= 10603.00
+|   |   |   |   |   |   |   |--- KM_Per_Tahun <= 8929.50
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 8772.50
+|   |   |   |   |   |   |   |   |   |--- Kilometer <= 15257.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kilometer >  15257.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  8772.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- KM_Per_Tahun >  8929.50
+|   |   |   |   |   |   |   |   |--- Kilometer <= 29602.50
+|   |   |   |   |   |   |   |   |   |--- Kilometer <= 28104.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kilometer >  28104.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- Kilometer >  29602.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- KM_Per_Tahun >  10603.00
+|   |   |   |   |   |   |   |--- KM_Per_Tahun <= 11953.00
+|   |   |   |   |   |   |   |   |--- Kilometer <= 46898.50
+|   |   |   |   |   |   |   |   |   |--- Tahun Kendaraan <= 2019.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Tahun Kendaraan >  2019.50
+|   |   |   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |   |   |--- Kilometer >  46898.50
+|   |   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |   |--- KM_Per_Tahun >  11953.00
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 12627.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  12627.50
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 13238.00
+|   |   |   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  13238.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |--- Kilometer >  64034.50
+|   |   |   |   |   |--- Kilometer <= 69281.00
+|   |   |   |   |   |   |--- Kode Unit Motor <= 9.50
+|   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |--- Kode Unit Motor >  9.50
+|   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |--- Kilometer >  69281.00
+|   |   |   |   |   |   |--- class: repair
+|   |   |--- Bulan_Terakhir_Ganti_Oli >  3.50
+|   |   |   |--- KM_Per_Tahun <= 12979.50
+|   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 7363.50
+|   |   |   |   |   |--- Bulan_Terakhir_Ganti_Oli <= 8.50
+|   |   |   |   |   |   |--- Kilometer <= 48393.50
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 5896.00
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 7563.50
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor <= 5.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor >  5.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  7563.50
+|   |   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 875.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  875.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  5896.00
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 6240.00
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  6240.00
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 7893.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  7893.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- Kilometer >  48393.50
+|   |   |   |   |   |   |   |--- KM_Per_Tahun <= 12355.50
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 9591.00
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  9591.00
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- KM_Per_Tahun >  12355.50
+|   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |--- Bulan_Terakhir_Ganti_Oli >  8.50
+|   |   |   |   |   |   |--- Kilometer <= 24675.00
+|   |   |   |   |   |   |   |--- Bulan_Terakhir_Ganti_Oli <= 11.50
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 7144.00
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 11259.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  11259.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  7144.00
+|   |   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |   |--- Bulan_Terakhir_Ganti_Oli >  11.50
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 4376.00
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 10391.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  10391.00
+|   |   |   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  4376.00
+|   |   |   |   |   |   |   |   |   |--- Kilometer <= 16677.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kilometer >  16677.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- Kilometer >  24675.00
+|   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |--- KM_Terakhir_Ganti_Oli >  7363.50
+|   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 9344.50
+|   |   |   |   |   |   |--- Kilometer <= 22853.00
+|   |   |   |   |   |   |   |--- Kilometer <= 17248.00
+|   |   |   |   |   |   |   |   |--- Kilometer <= 15428.00
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 9151.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  9151.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- Kilometer >  15428.00
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- Kilometer >  17248.00
+|   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- Kilometer >  22853.00
+|   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  9344.50
+|   |   |   |   |   |   |--- class: rutin
+|   |   |   |--- KM_Per_Tahun >  12979.50
+|   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 362.00
+|   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 228.00
+|   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  228.00
+|   |   |   |   |   |   |--- class: repair
+|   |   |   |   |--- KM_Terakhir_Ganti_Oli >  362.00
+|   |   |   |   |   |--- Kondisi_Oli <= 0.50
+|   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |--- Kondisi_Oli >  0.50
+|   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 5071.50
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 3587.00
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 2603.00
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 13602.00
+|   |   |   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  13602.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  2603.00
+|   |   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 2757.50
+|   |   |   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  2757.50
+|   |   |   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  3587.00
+|   |   |   |   |   |   |   |   |--- Kilometer <= 14647.00
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- Kilometer >  14647.00
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  5071.50
+|   |   |   |   |   |   |   |--- Kilometer <= 14718.50
+|   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |   |--- Kilometer >  14718.50
+|   |   |   |   |   |   |   |   |--- class: rutin
+|   |--- Jumlah_Keluhan >  1.50
+|   |   |--- Kilometer <= 7484.00
+|   |   |   |--- Bulan_Terakhir_Ganti_Oli <= 11.50
+|   |   |   |   |--- KM_Per_Tahun <= 310.50
+|   |   |   |   |   |--- KM_Per_Tahun <= 9.50
+|   |   |   |   |   |   |--- Bulan_Terakhir_Ganti_Oli <= 8.50
+|   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- Bulan_Terakhir_Ganti_Oli >  8.50
+|   |   |   |   |   |   |   |--- Kode Unit Motor <= 2.50
+|   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- Kode Unit Motor >  2.50
+|   |   |   |   |   |   |   |   |--- Kode Unit Motor <= 4.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- Kode Unit Motor >  4.50
+|   |   |   |   |   |   |   |   |   |--- Tahun Kendaraan <= 2022.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Tahun Kendaraan >  2022.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |--- KM_Per_Tahun >  9.50
+|   |   |   |   |   |   |--- class: repair
+|   |   |   |   |--- KM_Per_Tahun >  310.50
+|   |   |   |   |   |--- Kilometer <= 407.50
+|   |   |   |   |   |   |--- Kilometer <= 344.00
+|   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- Kilometer >  344.00
+|   |   |   |   |   |   |   |--- Kode Unit Motor <= 7.00
+|   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- Kode Unit Motor >  7.00
+|   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |--- Kilometer >  407.50
+|   |   |   |   |   |   |--- Kode Unit Motor <= 8.50
+|   |   |   |   |   |   |   |--- Tahun Kendaraan <= 2022.50
+|   |   |   |   |   |   |   |   |--- Kode Unit Motor <= 6.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- Kode Unit Motor >  6.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- Tahun Kendaraan >  2022.50
+|   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- Kode Unit Motor >  8.50
+|   |   |   |   |   |   |   |--- class: repair
+|   |   |   |--- Bulan_Terakhir_Ganti_Oli >  11.50
+|   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 4751.00
+|   |   |   |   |   |--- Tahun Kendaraan <= 2021.50
+|   |   |   |   |   |   |--- KM_Per_Tahun <= 462.50
+|   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- KM_Per_Tahun >  462.50
+|   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |--- Tahun Kendaraan >  2021.50
+|   |   |   |   |   |   |--- Kilometer <= 362.00
+|   |   |   |   |   |   |   |--- Tahun Kendaraan <= 2022.50
+|   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |   |--- Tahun Kendaraan >  2022.50
+|   |   |   |   |   |   |   |   |--- Kode Unit Motor <= 2.00
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- Kode Unit Motor >  2.00
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- Kilometer >  362.00
+|   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |--- KM_Terakhir_Ganti_Oli >  4751.00
+|   |   |   |   |   |--- class: repair
+|   |   |--- Kilometer >  7484.00
+|   |   |   |--- Jumlah_Keluhan <= 2.50
+|   |   |   |   |--- Kilometer <= 59225.50
+|   |   |   |   |   |--- Bulan_Terakhir_Ganti_Oli <= 9.50
+|   |   |   |   |   |   |--- Kilometer <= 18353.50
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 7089.00
+|   |   |   |   |   |   |   |   |--- Bulan_Terakhir_Ganti_Oli <= 4.50
+|   |   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 3435.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  3435.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- Bulan_Terakhir_Ganti_Oli >  4.50
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor <= 11.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor >  11.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  7089.00
+|   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- Kilometer >  18353.50
+|   |   |   |   |   |   |   |--- Kilometer <= 20289.50
+|   |   |   |   |   |   |   |   |--- Kode Unit Motor <= 6.50
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor <= 4.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor >  4.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- Kode Unit Motor >  6.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- Kilometer >  20289.50
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 3641.00
+|   |   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 3613.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  3613.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  3641.00
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor <= 5.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor >  5.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |--- Bulan_Terakhir_Ganti_Oli >  9.50
+|   |   |   |   |   |   |--- Kilometer <= 27404.00
+|   |   |   |   |   |   |   |--- Kilometer <= 23790.00
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 1565.50
+|   |   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 900.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  900.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  1565.50
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor <= 2.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor >  2.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- Kilometer >  23790.00
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 12124.50
+|   |   |   |   |   |   |   |   |   |--- Kilometer <= 24267.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kilometer >  24267.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  12124.50
+|   |   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 4053.50
+|   |   |   |   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  4053.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- Kilometer >  27404.00
+|   |   |   |   |   |   |   |--- KM_Per_Tahun <= 8988.00
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 8284.00
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 6438.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  6438.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  8284.00
+|   |   |   |   |   |   |   |   |   |--- Kilometer <= 42984.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kilometer >  42984.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- KM_Per_Tahun >  8988.00
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 12471.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  12471.50
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 13221.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  13221.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |--- Kilometer >  59225.50
+|   |   |   |   |   |--- class: repair
+|   |   |   |--- Jumlah_Keluhan >  2.50
+|   |   |   |   |--- KM_Per_Tahun <= 14199.50
+|   |   |   |   |   |--- Kode Unit Motor <= 11.50
+|   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 4012.00
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 3969.50
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 7743.00
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  7743.00
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 9454.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  9454.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  3969.50
+|   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  4012.00
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 5992.00
+|   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  5992.00
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 6024.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  6024.50
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor <= 9.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- Kode Unit Motor >  9.50
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |--- Kode Unit Motor >  11.50
+|   |   |   |   |   |   |--- Kondisi_Oli <= 1.50
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 6589.00
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 7125.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  7125.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  6589.00
+|   |   |   |   |   |   |   |   |--- Kilometer <= 27934.00
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- Kilometer >  27934.00
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun <= 11321.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |   |--- KM_Per_Tahun >  11321.00
+|   |   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- Kondisi_Oli >  1.50
+|   |   |   |   |   |   |   |--- Kode Unit Motor <= 12.50
+|   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- Kode Unit Motor >  12.50
+|   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |--- KM_Per_Tahun >  14199.50
+|   |   |   |   |   |--- KM_Per_Tahun <= 14913.50
+|   |   |   |   |   |   |--- KM_Per_Tahun <= 14855.00
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli <= 2541.50
+|   |   |   |   |   |   |   |   |--- Kode Unit Motor <= 9.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |   |--- Kode Unit Motor >  9.50
+|   |   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- KM_Terakhir_Ganti_Oli >  2541.50
+|   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- KM_Per_Tahun >  14855.00
+|   |   |   |   |   |   |   |--- class: rutin
+|   |   |   |   |   |--- KM_Per_Tahun >  14913.50
+|   |   |   |   |   |   |--- Kondisi_Oli <= 1.50
+|   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |--- Kondisi_Oli >  1.50
+|   |   |   |   |   |   |   |--- Kilometer <= 45960.50
+|   |   |   |   |   |   |   |   |--- class: repair
+|   |   |   |   |   |   |   |--- Kilometer >  45960.50
+|   |   |   |   |   |   |   |   |--- class: repair
+
+
+2. Detail Setiap Node Split:
+
+--- Node 0 (Split Node) ---
+  - Fitur Split      : Jumlah_Keluhan
+  - Threshold        : 0.5000
+  - Jumlah Sampel    : 7833
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.5000
+
+--- Node 2 (Split Node) ---
+  - Fitur Split      : Jumlah_Keluhan
+  - Threshold        : 1.5000
+  - Jumlah Sampel    : 4755
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2862
+
+--- Node 3 (Split Node) ---
+  - Fitur Split      : Bulan_Terakhir_Ganti_Oli
+  - Threshold        : 3.5000
+  - Jumlah Sampel    : 1944
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4543
+
+--- Node 4 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 87.5000
+  - Jumlah Sampel    : 433
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4165
+
+--- Node 5 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 3.5000
+  - Jumlah Sampel    : 25
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4992
+
+--- Node 7 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 37990.0000
+  - Jumlah Sampel    : 20
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4800
+
+--- Node 8 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 7.5000
+  - Jumlah Sampel    : 15
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3911
+
+--- Node 12 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 64034.5000
+  - Jumlah Sampel    : 408
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4048
+
+--- Node 13 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 6.5000
+  - Jumlah Sampel    : 389
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3941
+
+--- Node 14 (Split Node) ---
+  - Fitur Split      : Kondisi_Oli
+  - Threshold        : 1.5000
+  - Jumlah Sampel    : 230
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4333
+
+--- Node 15 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 1505.0000
+  - Jumlah Sampel    : 196
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4125
+
+--- Node 16 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 1372.0000
+  - Jumlah Sampel    : 178
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4313
+
+--- Node 17 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 51457.5000
+  - Jumlah Sampel    : 164
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4140
+
+--- Node 20 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 29765.5000
+  - Jumlah Sampel    : 14
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4898
+
+--- Node 23 (Split Node) ---
+  - Fitur Split      : Tahun Kendaraan
+  - Threshold        : 2019.5000
+  - Jumlah Sampel    : 18
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1049
+
+--- Node 26 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 6458.5000
+  - Jumlah Sampel    : 34
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4983
+
+--- Node 28 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 2082.5000
+  - Jumlah Sampel    : 25
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4800
+
+--- Node 30 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 2.5000
+  - Jumlah Sampel    : 18
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4938
+
+--- Node 33 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 10603.0000
+  - Jumlah Sampel    : 159
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3215
+
+--- Node 34 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 8929.5000
+  - Jumlah Sampel    : 92
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2427
+
+--- Node 35 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 8772.5000
+  - Jumlah Sampel    : 56
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3157
+
+--- Node 36 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 15257.0000
+  - Jumlah Sampel    : 49
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2732
+
+--- Node 40 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 29602.5000
+  - Jumlah Sampel    : 36
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1049
+
+--- Node 41 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 28104.5000
+  - Jumlah Sampel    : 15
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2311
+
+--- Node 45 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 11953.0000
+  - Jumlah Sampel    : 67
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4063
+
+--- Node 46 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 46898.5000
+  - Jumlah Sampel    : 24
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4965
+
+--- Node 47 (Split Node) ---
+  - Fitur Split      : Tahun Kendaraan
+  - Threshold        : 2019.5000
+  - Jumlah Sampel    : 16
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4297
+
+--- Node 51 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 12627.5000
+  - Jumlah Sampel    : 43
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3029
+
+--- Node 53 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 13238.0000
+  - Jumlah Sampel    : 32
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3750
+
+--- Node 56 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 69281.0000
+  - Jumlah Sampel    : 19
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4986
+
+--- Node 57 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 9.5000
+  - Jumlah Sampel    : 10
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3200
+
+--- Node 61 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 12979.5000
+  - Jumlah Sampel    : 1511
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4630
+
+--- Node 62 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 7363.5000
+  - Jumlah Sampel    : 1412
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4583
+
+--- Node 63 (Split Node) ---
+  - Fitur Split      : Bulan_Terakhir_Ganti_Oli
+  - Threshold        : 8.5000
+  - Jumlah Sampel    : 1366
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4609
+
+--- Node 64 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 48393.5000
+  - Jumlah Sampel    : 747
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4444
+
+--- Node 65 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 5896.0000
+  - Jumlah Sampel    : 722
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4493
+
+--- Node 66 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 7563.5000
+  - Jumlah Sampel    : 698
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4530
+
+--- Node 67 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 5.5000
+  - Jumlah Sampel    : 333
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4273
+
+--- Node 70 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 875.0000
+  - Jumlah Sampel    : 365
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4716
+
+--- Node 73 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 6240.0000
+  - Jumlah Sampel    : 24
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2778
+
+--- Node 75 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 7893.5000
+  - Jumlah Sampel    : 13
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4260
+
+--- Node 78 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 12355.5000
+  - Jumlah Sampel    : 25
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2112
+
+--- Node 79 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 9591.0000
+  - Jumlah Sampel    : 20
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0950
+
+--- Node 83 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 24675.0000
+  - Jumlah Sampel    : 619
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4769
+
+--- Node 84 (Split Node) ---
+  - Fitur Split      : Bulan_Terakhir_Ganti_Oli
+  - Threshold        : 11.5000
+  - Jumlah Sampel    : 598
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4668
+
+--- Node 85 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 7144.0000
+  - Jumlah Sampel    : 471
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4788
+
+--- Node 86 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 11259.0000
+  - Jumlah Sampel    : 464
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4768
+
+--- Node 90 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 4376.0000
+  - Jumlah Sampel    : 127
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3993
+
+--- Node 91 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 10391.0000
+  - Jumlah Sampel    : 96
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4512
+
+--- Node 94 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 16677.5000
+  - Jumlah Sampel    : 31
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1207
+
+--- Node 98 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 9344.5000
+  - Jumlah Sampel    : 46
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3403
+
+--- Node 99 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 22853.0000
+  - Jumlah Sampel    : 39
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2235
+
+--- Node 100 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 17248.0000
+  - Jumlah Sampel    : 34
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1609
+
+--- Node 101 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 15428.0000
+  - Jumlah Sampel    : 18
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2778
+
+--- Node 102 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 9151.5000
+  - Jumlah Sampel    : 13
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1420
+
+--- Node 109 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 362.0000
+  - Jumlah Sampel    : 99
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4995
+
+--- Node 110 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 228.0000
+  - Jumlah Sampel    : 13
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3550
+
+--- Node 113 (Split Node) ---
+  - Fitur Split      : Kondisi_Oli
+  - Threshold        : 0.5000
+  - Jumlah Sampel    : 86
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4989
+
+--- Node 115 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 5071.5000
+  - Jumlah Sampel    : 78
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4997
+
+--- Node 116 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 3587.0000
+  - Jumlah Sampel    : 65
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4942
+
+--- Node 117 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 2603.0000
+  - Jumlah Sampel    : 52
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.5000
+
+--- Node 118 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 13602.0000
+  - Jumlah Sampel    : 36
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4753
+
+--- Node 121 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 2757.5000
+  - Jumlah Sampel    : 16
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3750
+
+--- Node 124 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 14647.0000
+  - Jumlah Sampel    : 13
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3550
+
+--- Node 127 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 14718.5000
+  - Jumlah Sampel    : 13
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4260
+
+--- Node 130 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 7484.0000
+  - Jumlah Sampel    : 2811
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0978
+
+--- Node 131 (Split Node) ---
+  - Fitur Split      : Bulan_Terakhir_Ganti_Oli
+  - Threshold        : 11.5000
+  - Jumlah Sampel    : 255
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1955
+
+--- Node 132 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 310.5000
+  - Jumlah Sampel    : 208
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1660
+
+--- Node 133 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 9.5000
+  - Jumlah Sampel    : 126
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1049
+
+--- Node 134 (Split Node) ---
+  - Fitur Split      : Bulan_Terakhir_Ganti_Oli
+  - Threshold        : 8.5000
+  - Jumlah Sampel    : 80
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1597
+
+--- Node 136 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 2.5000
+  - Jumlah Sampel    : 60
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2061
+
+--- Node 138 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 4.5000
+  - Jumlah Sampel    : 47
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2535
+
+--- Node 140 (Split Node) ---
+  - Fitur Split      : Tahun Kendaraan
+  - Threshold        : 2022.5000
+  - Jumlah Sampel    : 39
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2235
+
+--- Node 144 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 407.5000
+  - Jumlah Sampel    : 82
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2499
+
+--- Node 145 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 344.0000
+  - Jumlah Sampel    : 18
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4753
+
+--- Node 147 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 7.0000
+  - Jumlah Sampel    : 10
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4800
+
+--- Node 150 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 8.5000
+  - Jumlah Sampel    : 64
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1440
+
+--- Node 151 (Split Node) ---
+  - Fitur Split      : Tahun Kendaraan
+  - Threshold        : 2022.5000
+  - Jumlah Sampel    : 58
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0981
+
+--- Node 152 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 6.5000
+  - Jumlah Sampel    : 51
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0384
+
+--- Node 157 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 4751.0000
+  - Jumlah Sampel    : 47
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3096
+
+--- Node 158 (Split Node) ---
+  - Fitur Split      : Tahun Kendaraan
+  - Threshold        : 2021.5000
+  - Jumlah Sampel    : 42
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2778
+
+--- Node 159 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 462.5000
+  - Jumlah Sampel    : 16
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1172
+
+--- Node 162 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 362.0000
+  - Jumlah Sampel    : 26
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3550
+
+--- Node 163 (Split Node) ---
+  - Fitur Split      : Tahun Kendaraan
+  - Threshold        : 2022.5000
+  - Jumlah Sampel    : 19
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4321
+
+--- Node 165 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 2.0000
+  - Jumlah Sampel    : 14
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3367
+
+--- Node 170 (Split Node) ---
+  - Fitur Split      : Jumlah_Keluhan
+  - Threshold        : 2.5000
+  - Jumlah Sampel    : 2556
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0874
+
+--- Node 171 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 59225.5000
+  - Jumlah Sampel    : 1444
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1084
+
+--- Node 172 (Split Node) ---
+  - Fitur Split      : Bulan_Terakhir_Ganti_Oli
+  - Threshold        : 9.5000
+  - Jumlah Sampel    : 1351
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1153
+
+--- Node 173 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 18353.5000
+  - Jumlah Sampel    : 923
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0986
+
+--- Node 174 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 7089.0000
+  - Jumlah Sampel    : 190
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0311
+
+--- Node 175 (Split Node) ---
+  - Fitur Split      : Bulan_Terakhir_Ganti_Oli
+  - Threshold        : 4.5000
+  - Jumlah Sampel    : 184
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0215
+
+--- Node 176 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 3435.5000
+  - Jumlah Sampel    : 16
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1172
+
+--- Node 179 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 11.5000
+  - Jumlah Sampel    : 168
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0118
+
+--- Node 183 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 20289.5000
+  - Jumlah Sampel    : 733
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1152
+
+--- Node 184 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 6.5000
+  - Jumlah Sampel    : 33
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2975
+
+--- Node 185 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 4.5000
+  - Jumlah Sampel    : 20
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4200
+
+--- Node 189 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 3641.0000
+  - Jumlah Sampel    : 700
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1052
+
+--- Node 190 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 3613.0000
+  - Jumlah Sampel    : 545
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1202
+
+--- Node 193 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 5.5000
+  - Jumlah Sampel    : 155
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0503
+
+--- Node 196 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 27404.0000
+  - Jumlah Sampel    : 428
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1502
+
+--- Node 197 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 23790.0000
+  - Jumlah Sampel    : 258
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1935
+
+--- Node 198 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 1565.5000
+  - Jumlah Sampel    : 213
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1702
+
+--- Node 199 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 900.5000
+  - Jumlah Sampel    : 27
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3018
+
+--- Node 202 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 2.5000
+  - Jumlah Sampel    : 186
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1483
+
+--- Node 205 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 12124.5000
+  - Jumlah Sampel    : 45
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2923
+
+--- Node 206 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 24267.5000
+  - Jumlah Sampel    : 35
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2024
+
+--- Node 209 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 4053.5000
+  - Jumlah Sampel    : 10
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4800
+
+--- Node 212 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 8988.0000
+  - Jumlah Sampel    : 170
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0790
+
+--- Node 213 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 8284.0000
+  - Jumlah Sampel    : 50
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1800
+
+--- Node 214 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 6438.0000
+  - Jumlah Sampel    : 37
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0526
+
+--- Node 217 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 42984.5000
+  - Jumlah Sampel    : 13
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.4260
+
+--- Node 220 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 12471.5000
+  - Jumlah Sampel    : 120
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0328
+
+--- Node 222 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 13221.0000
+  - Jumlah Sampel    : 44
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0868
+
+--- Node 226 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 14199.5000
+  - Jumlah Sampel    : 1112
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0593
+
+--- Node 227 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 11.5000
+  - Jumlah Sampel    : 1007
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0522
+
+--- Node 228 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 4012.0000
+  - Jumlah Sampel    : 865
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0452
+
+--- Node 229 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 3969.5000
+  - Jumlah Sampel    : 489
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0633
+
+--- Node 230 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 7743.0000
+  - Jumlah Sampel    : 482
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0564
+
+--- Node 232 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 9454.5000
+  - Jumlah Sampel    : 377
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0715
+
+--- Node 236 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 5992.0000
+  - Jumlah Sampel    : 376
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0211
+
+--- Node 238 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 6024.5000
+  - Jumlah Sampel    : 159
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0490
+
+--- Node 240 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 9.5000
+  - Jumlah Sampel    : 153
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0384
+
+--- Node 243 (Split Node) ---
+  - Fitur Split      : Kondisi_Oli
+  - Threshold        : 1.5000
+  - Jumlah Sampel    : 142
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0937
+
+--- Node 244 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 6589.0000
+  - Jumlah Sampel    : 128
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0605
+
+--- Node 245 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 7125.5000
+  - Jumlah Sampel    : 108
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0183
+
+--- Node 248 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 27934.0000
+  - Jumlah Sampel    : 20
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2550
+
+--- Node 250 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 11321.0000
+  - Jumlah Sampel    : 15
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1244
+
+--- Node 253 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 12.5000
+  - Jumlah Sampel    : 14
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3367
+
+--- Node 256 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 14913.5000
+  - Jumlah Sampel    : 105
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1244
+
+--- Node 257 (Split Node) ---
+  - Fitur Split      : KM_Per_Tahun
+  - Threshold        : 14855.0000
+  - Jumlah Sampel    : 41
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2499
+
+--- Node 258 (Split Node) ---
+  - Fitur Split      : KM_Terakhir_Ganti_Oli
+  - Threshold        : 2541.5000
+  - Jumlah Sampel    : 36
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1528
+
+--- Node 259 (Split Node) ---
+  - Fitur Split      : Kode Unit Motor
+  - Threshold        : 9.5000
+  - Jumlah Sampel    : 14
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.3367
+
+--- Node 264 (Split Node) ---
+  - Fitur Split      : Kondisi_Oli
+  - Threshold        : 1.5000
+  - Jumlah Sampel    : 64
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0308
+
+--- Node 266 (Split Node) ---
+  - Fitur Split      : Kilometer
+  - Threshold        : 45960.5000
+  - Jumlah Sampel    : 10
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.1800
+
+
+
+3. Analisis Split pada Fitur 'Jumlah_Keluhan':
+
+--- Split on 'Jumlah_Keluhan' at Node 0 ---
+  - Threshold        : 0.5000
+  - Jumlah Sampel    : 7833
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.5000
+  - Left Child (Node 1):
+    - Samples        : 3078
+    - Distribution   : repair=0, rutin=1
+    - Gini           : 0.0000
+  - Right Child (Node 2):
+    - Samples        : 4755
+    - Distribution   : repair=0, rutin=0
+    - Gini           : 0.2862
+
+--- Split on 'Jumlah_Keluhan' at Node 2 ---
+  - Threshold        : 1.5000
+  - Jumlah Sampel    : 4755
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.2862
+  - Left Child (Node 3):
+    - Samples        : 1944
+    - Distribution   : repair=0, rutin=0
+    - Gini           : 0.4543
+  - Right Child (Node 130):
+    - Samples        : 2811
+    - Distribution   : repair=0, rutin=0
+    - Gini           : 0.0978
+
+--- Split on 'Jumlah_Keluhan' at Node 170 ---
+  - Threshold        : 2.5000
+  - Jumlah Sampel    : 2556
+  - Distribusi Kelas : repair=0, rutin=0
+  - Gini Impurity    : 0.0874
+  - Left Child (Node 171):
+    - Samples        : 1444
+    - Distribution   : repair=0, rutin=0
+    - Gini           : 0.1084
+  - Right Child (Node 226):
+    - Samples        : 1112
+    - Distribution   : repair=0, rutin=0
+    - Gini           : 0.0593
+

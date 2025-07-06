@@ -1,0 +1,167 @@
+Memulai pra-pemrosesan data...
+Membaca data dari: d:\EXPERIMENT\indoperkasa_modified.csv
+Jumlah data awal: 9891 baris, 14 kolom
+Kolom awal: ['Tgl FJB', 'No FJB', 'Kode Cust', 'Kode Unit Motor', 'Tahun Kendaraan', 'Kilometer', 'Jns Service', 'Kondisi_Oli', 'Kondisi_Rem', 'Bulan_Terakhir_Ganti_Oli', 'KM_Terakhir_Ganti_Oli', 'Usia_Kendaraan', 'Jumlah_Keluhan', 'KM_Per_Tahun']
+Jumlah data setelah seleksi fitur: 9891 baris
+Jumlah data sebelum filter jenis layanan: 9891 baris
+Distribusi jenis service sebelum preprocessing:
+Jns Service
+Repair                     4915
+Rutin                      3983
+Kupon Gratis I (DUA)        502
+Kupon Gratis II (TIGA)      250
+Kupon Gratis III (TIGA)     142
+Jual Part                    99
+Name: count, dtype: int64
+
+Distribusi jenis service setelah standardisasi:
+Jns Service
+repair    4915
+rutin     4877
+other       99
+Name: count, dtype: int64
+
+Jumlah data setelah penghapusan data tidak relevan: 9792 baris
+Data yang dihapus: 99 baris
+Distribusi final jenis service:
+Jns Service
+repair    4915
+rutin     4877
+Name: count, dtype: int64
+Data hasil preprocessing disimpan ke: d:\EXPERIMENT\indoperkasa2_clean.csv
+
+=== PENANGANAN MISSING VALUE ===
+Jumlah data sebelum penanganan missing value: 9792 baris
+
+Missing values per kolom sebelum penanganan:
+Series([], dtype: int64)
+
+Penanganan missing value untuk fitur numerik (menggunakan median):
+  Tahun Kendaraan: tidak ada missing values
+  Kilometer: tidak ada missing values
+  Usia_Kendaraan: tidak ada missing values
+  KM_Terakhir_Ganti_Oli: tidak ada missing values
+  Bulan_Terakhir_Ganti_Oli: tidak ada missing values
+  KM_Per_Tahun: tidak ada missing values
+  Jumlah_Keluhan: tidak ada missing values
+
+Penanganan missing value untuk fitur kategorikal (menggunakan modus):
+  Kode Unit Motor: tidak ada missing values
+  Kondisi_Oli: tidak ada missing values
+  Kondisi_Rem: tidak ada missing values
+
+Missing values setelah penanganan:
+Semua missing values telah ditangani.
+
+=== TRANSFORMASI DATA KATEGORIKAL ===
+Menerapkan Label Encoding pada fitur kategorikal:
+
+  Kode Unit Motor:
+    Kategori unik sebelum encoding: ['MIO-M3 125', 'ALL-NEW-AEROX', 'NMAX-NEO-S', 'FREE-GO-S', 'X-MAX-CONNEC', 'ALL-NEW-NMAX', 'MT-15', 'MIO', 'XSR 155', 'LEXI', 'FILANO-NEO', 'R15', 'VIXION', 'FAZZIO-NEO-HY']
+    Hasil encoding:
+      'ALL-NEW-AEROX' -> 0
+      'ALL-NEW-NMAX' -> 1
+      'FAZZIO-NEO-HY' -> 2
+      'FILANO-NEO' -> 3
+      'FREE-GO-S' -> 4
+      'LEXI' -> 5
+      'MIO' -> 6
+      'MIO-M3 125' -> 7
+      'MT-15' -> 8
+      'NMAX-NEO-S' -> 9
+      'R15' -> 10
+      'VIXION' -> 11
+      'X-MAX-CONNEC' -> 12
+      'XSR 155' -> 13
+
+  Kondisi_Oli:
+    Kategori unik sebelum encoding: ['Baik', 'Perlu Ganti', 'Kritis']
+    Hasil encoding:
+      'Baik' -> 0
+      'Kritis' -> 1
+      'Perlu Ganti' -> 2
+
+  Kondisi_Rem:
+    Kategori unik sebelum encoding: ['Baik', 'Perlu Penggantian', 'Perlu Penyetelan']
+    Hasil encoding:
+      'Baik' -> 0
+      'Perlu Penggantian' -> 1
+      'Perlu Penyetelan' -> 2
+
+Menerapkan Label Encoding pada target variable (Jns Service):
+  Kategori target sebelum encoding: ['rutin', 'repair']
+  Hasil encoding target:
+    'repair' -> 0
+    'rutin' -> 1
+
+Transformasi data kategorikal selesai.
+
+=== PEMBAGIAN DATASET ===
+Total fitur yang digunakan: 10
+Nama fitur: ['Kode Unit Motor', 'Tahun Kendaraan', 'Kilometer', 'Usia_Kendaraan', 'Kondisi_Oli', 'Kondisi_Rem', 'KM_Terakhir_Ganti_Oli', 'Bulan_Terakhir_Ganti_Oli', 'KM_Per_Tahun', 'Jumlah_Keluhan']
+Dimensi data fitur (X): (9792, 10)
+Dimensi data target (y): 9792
+
+Distribusi target sebelum pembagian:
+  repair (encoded: 0): 4915 data
+  rutin (encoded: 1): 4877 data
+
+Hasil pembagian dataset:
+  Data Latih (Training Set): 7833 data (80.0%)
+  Data Uji (Testing Set): 1959 data (20.0%)
+
+Distribusi target pada Data Latih:
+  repair: 3932 data
+  rutin: 3901 data
+
+Distribusi target pada Data Uji:
+  repair: 983 data
+  rutin: 976 data
+
+Pembagian dataset menggunakan random splitting dengan stratifikasi selesai.
+
+Melatih model decision tree...
+Melatih Decision Tree dengan 7833 sampel training...
+
+Performa Model:
+Akurasi: 0.8882
+
+Laporan Klasifikasi:
+              precision    recall  f1-score   support
+
+           0       0.84      0.96      0.90       983
+           1       0.96      0.81      0.88       976
+
+    accuracy                           0.89      1959
+   macro avg       0.90      0.89      0.89      1959
+weighted avg       0.90      0.89      0.89      1959
+
+
+Matriks Konfusi:
+[[947  36]
+ [183 793]]
+
+Tingkat Kepentingan Fitur:
+                      Fitur  Tingkat_Kepentingan
+9            Jumlah_Keluhan             0.941271
+2                 Kilometer             0.017559
+6     KM_Terakhir_Ganti_Oli             0.015076
+8              KM_Per_Tahun             0.011893
+0           Kode Unit Motor             0.007166
+7  Bulan_Terakhir_Ganti_Oli             0.003501
+1           Tahun Kendaraan             0.001805
+4               Kondisi_Oli             0.001729
+5               Kondisi_Rem             0.000000
+3            Usia_Kendaraan             0.000000
+
+Menyimpan model dan hasil...
+
+Model dan data preprocessing disimpan ke: d:\EXPERIMENT\model_output
+File yang disimpan:
+  - model.pkl (model terlatih)
+  - preprocessing.pkl (objek preprocessing)
+  - preprocessed_data.pkl (data train/test) *** FILE BARU ***
+  - performance_metrics.txt (metrik performa)
+  - feature_importance.csv (kepentingan fitur)
+
+Pra-pemrosesan dan pelatihan model selesai dengan sukses.

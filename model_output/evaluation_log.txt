@@ -1,0 +1,74 @@
+Membaca model dan data dari direktori: D:\EXPERIMENT\model_output
+✓ Model berhasil dimuat
+✓ Data test berhasil dimuat
+✓ Objek preprocessing berhasil dimuat
+
+Informasi Dataset:
+Jumlah data test: 1959 sampel
+Jumlah fitur: 10
+Jumlah kelas: 2 (repair, rutin)
+
+Melakukan prediksi pada data test...
+✓ Prediksi selesai
+
+Menghitung metrik evaluasi...
+
+============================================================
+                   HASIL EVALUASI MODEL
+============================================================
+
+**1. METRIK PERFORMA KESELURUHAN**
+----------------------------------------
+| Metric            | Score     |
+|-------------------|-----------|
+| Accuracy          | 0.8882    |
+| Precision (macro) | 0.8973    |
+| Recall (macro)    | 0.8879    |
+| F1-Score (macro)  | 0.8875    |
+----------------------------------------
+
+**2. METRIK PERFORMA PER KELAS**
+------------------------------------------------------------
+| Kelas   | Precision | Recall | F1-Score | Support |
+|---------|-----------|--------|----------|---------|
+| repair  |    0.8381 | 0.9634 |   0.8964 |     983 |
+| rutin   |    0.9566 | 0.8125 |   0.8787 |     976 |
+------------------------------------------------------------
+
+**3. CONFUSION MATRIX**
+----------------------------------------
+| Actual\Predicted |      repair      |      rutin       |
+|------------------|------------------|------------------|
+|      repair      |       947        |        36        |
+|      rutin       |       183        |       793        |
+|------------------|------------------|------------------|
+
+**4. INTERPRETASI HASIL**
+----------------------------------------
+Total sampel test     : 1959
+Prediksi benar        : 1740 (88.8%)
+Prediksi salah        : 219 (11.2%)
+
+Analisis per kelas:
+- repair:
+  * Aktual: 983, Diprediksi: 1130
+  * Benar diprediksi: 947
+  * Akurasi kelas: 96.3%
+- rutin:
+  * Aktual: 976, Diprediksi: 829
+  * Benar diprediksi: 793
+  * Akurasi kelas: 81.2%
+
+Menyimpan hasil evaluasi...
+
+============================================================
+                    FILE OUTPUT
+============================================================
+Log evaluasi lengkap  : D:\EXPERIMENT\model_output\evaluation_log.txt
+Hasil evaluasi (pkl)  : D:\EXPERIMENT\model_output\evaluation_results.pkl
+Confusion matrix (csv): D:\EXPERIMENT\model_output\confusion_matrix.csv
+Confusion matrix (png): D:\EXPERIMENT\model_output\confusion_matrix.png
+Metrik per kelas (csv): D:\EXPERIMENT\model_output\metrics_per_class.csv
+============================================================
+
+✓ Evaluasi model selesai dengan sukses!
